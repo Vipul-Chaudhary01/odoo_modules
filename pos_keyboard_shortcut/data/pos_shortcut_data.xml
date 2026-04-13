@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="shortcut_product_payment" model="pos.keyboard.shortcut">
+        <field name="name">Go to Payment</field>
+        <field name="sequence">10</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Shift+P</field>
+        <field name="action">go_payment</field>
+        <field name="description">Open the payment screen for the current order.</field>
+    </record>
+    <record id="shortcut_product_qty" model="pos.keyboard.shortcut">
+        <field name="name">Quantity Mode</field>
+        <field name="sequence">20</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Q</field>
+        <field name="action">mode_quantity</field>
+        <field name="description">Switch the numpad to quantity mode.</field>
+    </record>
+    <record id="shortcut_product_discount" model="pos.keyboard.shortcut">
+        <field name="name">Discount Mode</field>
+        <field name="sequence">30</field>
+        <field name="screen_scope">product</field>
+        <field name="key">D</field>
+        <field name="action">mode_discount</field>
+        <field name="description">Switch the numpad to discount mode.</field>
+    </record>
+    <record id="shortcut_product_price" model="pos.keyboard.shortcut">
+        <field name="name">Price Mode</field>
+        <field name="sequence">40</field>
+        <field name="screen_scope">product</field>
+        <field name="key">P</field>
+        <field name="action">mode_price</field>
+        <field name="description">Switch the numpad to price mode.</field>
+    </record>
+    <record id="shortcut_product_search" model="pos.keyboard.shortcut">
+        <field name="name">Search Product</field>
+        <field name="sequence">50</field>
+        <field name="screen_scope">product</field>
+        <field name="key">/</field>
+        <field name="action">focus_product_search</field>
+        <field name="description">Focus the product search box.</field>
+    </record>
+    <record id="shortcut_product_delete_line" model="pos.keyboard.shortcut">
+        <field name="name">Delete Order Line</field>
+        <field name="sequence">60</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Delete</field>
+        <field name="action">delete_orderline</field>
+        <field name="description">Delete the selected order line.</field>
+    </record>
+    <record id="shortcut_product_line_up" model="pos.keyboard.shortcut">
+        <field name="name">Previous Order Line</field>
+        <field name="sequence">70</field>
+        <field name="screen_scope">product</field>
+        <field name="key">ArrowUp</field>
+        <field name="action">select_orderline_up</field>
+        <field name="description">Select the previous order line.</field>
+    </record>
+    <record id="shortcut_product_line_down" model="pos.keyboard.shortcut">
+        <field name="name">Next Order Line</field>
+        <field name="sequence">80</field>
+        <field name="screen_scope">product</field>
+        <field name="key">ArrowDown</field>
+        <field name="action">select_orderline_down</field>
+        <field name="description">Select the next order line.</field>
+    </record>
+    <record id="shortcut_product_add_first" model="pos.keyboard.shortcut">
+        <field name="name">Add First Visible Product</field>
+        <field name="sequence">90</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Enter</field>
+        <field name="action">add_first_product</field>
+        <field name="description">Add the first visible product.</field>
+    </record>
+    <record id="shortcut_product_add_visible" model="pos.keyboard.shortcut">
+        <field name="name">Add Visible Products</field>
+        <field name="sequence">92</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Ctrl+A</field>
+        <field name="action">add_visible_products</field>
+        <field name="description">Add all visible products to the current order.</field>
+    </record>
+    <record id="shortcut_product_search_ctrl" model="pos.keyboard.shortcut">
+        <field name="name">Focus Product Search</field>
+        <field name="sequence">94</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Ctrl+F</field>
+        <field name="action">focus_product_search</field>
+        <field name="description">Focus the product search box.</field>
+    </record>
+    <record id="shortcut_product_duplicate_line" model="pos.keyboard.shortcut">
+        <field name="name">Duplicate Order Line</field>
+        <field name="sequence">96</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Ctrl+D</field>
+        <field name="action">duplicate_orderline</field>
+        <field name="description">Duplicate the selected order line.</field>
+    </record>
+    <record id="shortcut_product_clear_lines" model="pos.keyboard.shortcut">
+        <field name="name">Clear Order Lines</field>
+        <field name="sequence">98</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Ctrl+Backspace</field>
+        <field name="action">clear_orderlines</field>
+        <field name="description">Remove all order lines from the current order.</field>
+    </record>
+    <record id="shortcut_product_qty_plus" model="pos.keyboard.shortcut">
+        <field name="name">Increase Line Quantity</field>
+        <field name="sequence">100</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Ctrl+ArrowUp</field>
+        <field name="action">increase_orderline_qty</field>
+        <field name="description">Increase the selected line quantity.</field>
+    </record>
+    <record id="shortcut_product_qty_minus" model="pos.keyboard.shortcut">
+        <field name="name">Decrease Line Quantity</field>
+        <field name="sequence">102</field>
+        <field name="screen_scope">product</field>
+        <field name="key">Ctrl+ArrowDown</field>
+        <field name="action">decrease_orderline_qty</field>
+        <field name="description">Decrease the selected line quantity.</field>
+    </record>
+
+    <record id="shortcut_payment_validate" model="pos.keyboard.shortcut">
+        <field name="name">Validate Order</field>
+        <field name="sequence">10</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">Enter</field>
+        <field name="action">validate_order</field>
+        <field name="description">Validate the paid order.</field>
+    </record>
+    <record id="shortcut_payment_delete_line" model="pos.keyboard.shortcut">
+        <field name="name">Delete Payment Line</field>
+        <field name="sequence">20</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">Delete</field>
+        <field name="action">delete_paymentline</field>
+        <field name="description">Delete the selected payment line.</field>
+    </record>
+    <record id="shortcut_payment_line_up" model="pos.keyboard.shortcut">
+        <field name="name">Previous Payment Line</field>
+        <field name="sequence">30</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">ArrowUp</field>
+        <field name="action">select_paymentline_up</field>
+        <field name="description">Select the previous payment line.</field>
+    </record>
+    <record id="shortcut_payment_line_down" model="pos.keyboard.shortcut">
+        <field name="name">Next Payment Line</field>
+        <field name="sequence">40</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">ArrowDown</field>
+        <field name="action">select_paymentline_down</field>
+        <field name="description">Select the next payment line.</field>
+    </record>
+    <record id="shortcut_payment_amount_10" model="pos.keyboard.shortcut">
+        <field name="name">Set Payment Amount 10</field>
+        <field name="sequence">50</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">Alt+1</field>
+        <field name="action">payment_amount</field>
+        <field name="target_amount">10</field>
+        <field name="description">Set the selected payment line to 10.</field>
+    </record>
+    <record id="shortcut_payment_amount_20" model="pos.keyboard.shortcut">
+        <field name="name">Set Payment Amount 20</field>
+        <field name="sequence">60</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">Alt+2</field>
+        <field name="action">payment_amount</field>
+        <field name="target_amount">20</field>
+        <field name="description">Set the selected payment line to 20.</field>
+    </record>
+    <record id="shortcut_payment_amount_50" model="pos.keyboard.shortcut">
+        <field name="name">Set Payment Amount 50</field>
+        <field name="sequence">70</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">Alt+5</field>
+        <field name="action">payment_amount</field>
+        <field name="target_amount">50</field>
+        <field name="description">Set the selected payment line to 50.</field>
+    </record>
+    <record id="shortcut_payment_cash" model="pos.keyboard.shortcut">
+        <field name="name">Cash Payment</field>
+        <field name="sequence">80</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">C</field>
+        <field name="action">payment_method</field>
+        <field name="target_payment_code">cash</field>
+        <field name="description">Select the cash payment method.</field>
+    </record>
+    <record id="shortcut_payment_bank" model="pos.keyboard.shortcut">
+        <field name="name">Bank Payment</field>
+        <field name="sequence">90</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">B</field>
+        <field name="action">payment_method</field>
+        <field name="target_payment_code">bank</field>
+        <field name="description">Select a bank/card payment method.</field>
+    </record>
+    <record id="shortcut_payment_validate_ctrl" model="pos.keyboard.shortcut">
+        <field name="name">Validate Order</field>
+        <field name="sequence">100</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">Ctrl+Enter</field>
+        <field name="action">validate_order</field>
+        <field name="description">Validate the paid order.</field>
+    </record>
+    <record id="shortcut_payment_pay_remaining" model="pos.keyboard.shortcut">
+        <field name="name">Pay Remaining Amount</field>
+        <field name="sequence">110</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">Ctrl+Space</field>
+        <field name="action">pay_remaining</field>
+        <field name="description">Add a payment line for the remaining amount.</field>
+    </record>
+    <record id="shortcut_payment_clear_lines" model="pos.keyboard.shortcut">
+        <field name="name">Clear Payment Lines</field>
+        <field name="sequence">120</field>
+        <field name="screen_scope">payment</field>
+        <field name="key">Ctrl+Backspace</field>
+        <field name="action">clear_paymentlines</field>
+        <field name="description">Remove all payment lines.</field>
+    </record>
+
+    <record id="shortcut_receipt_next" model="pos.keyboard.shortcut">
+        <field name="name">Next Order</field>
+        <field name="sequence">10</field>
+        <field name="screen_scope">receipt</field>
+        <field name="key">Enter</field>
+        <field name="action">next_order</field>
+        <field name="description">Start the next order.</field>
+    </record>
+
+    <record id="shortcut_customer_search" model="pos.keyboard.shortcut">
+        <field name="name">Search Customer</field>
+        <field name="sequence">10</field>
+        <field name="screen_scope">customer</field>
+        <field name="key">/</field>
+        <field name="action">focus_customer_search</field>
+        <field name="description">Focus the customer search field.</field>
+    </record>
+    <record id="shortcut_customer_up" model="pos.keyboard.shortcut">
+        <field name="name">Previous Customer</field>
+        <field name="sequence">20</field>
+        <field name="screen_scope">customer</field>
+        <field name="key">ArrowUp</field>
+        <field name="action">select_customer_up</field>
+        <field name="description">Highlight the previous customer.</field>
+    </record>
+    <record id="shortcut_customer_down" model="pos.keyboard.shortcut">
+        <field name="name">Next Customer</field>
+        <field name="sequence">30</field>
+        <field name="screen_scope">customer</field>
+        <field name="key">ArrowDown</field>
+        <field name="action">select_customer_down</field>
+        <field name="description">Highlight the next customer.</field>
+    </record>
+    <record id="shortcut_customer_set" model="pos.keyboard.shortcut">
+        <field name="name">Set Customer</field>
+        <field name="sequence">40</field>
+        <field name="screen_scope">customer</field>
+        <field name="key">Enter</field>
+        <field name="action">set_customer</field>
+        <field name="description">Select the highlighted customer.</field>
+    </record>
+    <record id="shortcut_customer_edit" model="pos.keyboard.shortcut">
+        <field name="name">Edit Customer</field>
+        <field name="sequence">50</field>
+        <field name="screen_scope">customer</field>
+        <field name="key">E</field>
+        <field name="action">edit_customer</field>
+        <field name="description">Edit the highlighted customer.</field>
+    </record>
+    <record id="shortcut_customer_save" model="pos.keyboard.shortcut">
+        <field name="name">Save Customer</field>
+        <field name="sequence">60</field>
+        <field name="screen_scope">customer</field>
+        <field name="key">Ctrl+Enter</field>
+        <field name="action">save_customer</field>
+        <field name="description">Save the customer form.</field>
+    </record>
+    <record id="shortcut_customer_create" model="pos.keyboard.shortcut">
+        <field name="name">Create Customer</field>
+        <field name="sequence">70</field>
+        <field name="screen_scope">customer</field>
+        <field name="key">N</field>
+        <field name="action">create_customer</field>
+        <field name="description">Create a new customer.</field>
+    </record>
+
+    <record id="shortcut_order_open" model="pos.keyboard.shortcut">
+        <field name="name">Open Orders</field>
+        <field name="sequence">10</field>
+        <field name="screen_scope">order</field>
+        <field name="key">O</field>
+        <field name="action">go_order</field>
+        <field name="description">Open the order screen.</field>
+    </record>
+    <record id="shortcut_order_search" model="pos.keyboard.shortcut">
+        <field name="name">Search Orders</field>
+        <field name="sequence">20</field>
+        <field name="screen_scope">order</field>
+        <field name="key">/</field>
+        <field name="action">focus_order_search</field>
+        <field name="description">Focus order search.</field>
+    </record>
+    <record id="shortcut_order_up" model="pos.keyboard.shortcut">
+        <field name="name">Previous Order</field>
+        <field name="sequence">30</field>
+        <field name="screen_scope">order</field>
+        <field name="key">ArrowUp</field>
+        <field name="action">select_order_up</field>
+        <field name="description">Highlight the previous order.</field>
+    </record>
+    <record id="shortcut_order_down" model="pos.keyboard.shortcut">
+        <field name="name">Next Order</field>
+        <field name="sequence">40</field>
+        <field name="screen_scope">order</field>
+        <field name="key">ArrowDown</field>
+        <field name="action">select_order_down</field>
+        <field name="description">Highlight the next order.</field>
+    </record>
+    <record id="shortcut_order_select" model="pos.keyboard.shortcut">
+        <field name="name">Select Order</field>
+        <field name="sequence">50</field>
+        <field name="screen_scope">order</field>
+        <field name="key">Enter</field>
+        <field name="action">select_order</field>
+        <field name="description">Open the highlighted order.</field>
+    </record>
+
+    <record id="shortcut_all_customer" model="pos.keyboard.shortcut">
+        <field name="name">Open Customer</field>
+        <field name="sequence">10</field>
+        <field name="screen_scope">all</field>
+        <field name="key">Ctrl+C</field>
+        <field name="action">go_customer</field>
+        <field name="description">Open customer selection.</field>
+    </record>
+    <record id="shortcut_all_back" model="pos.keyboard.shortcut">
+        <field name="name">Go Back</field>
+        <field name="sequence">20</field>
+        <field name="screen_scope">all</field>
+        <field name="key">Escape</field>
+        <field name="action">back</field>
+        <field name="description">Go back or close the current popup.</field>
+    </record>
+    <record id="shortcut_all_new_order" model="pos.keyboard.shortcut">
+        <field name="name">New Order</field>
+        <field name="sequence">30</field>
+        <field name="screen_scope">all</field>
+        <field name="key">Ctrl+N</field>
+        <field name="action">add_order</field>
+        <field name="description">Create a new order.</field>
+    </record>
+    <record id="shortcut_all_delete_order" model="pos.keyboard.shortcut">
+        <field name="name">Delete Current Order</field>
+        <field name="sequence">40</field>
+        <field name="screen_scope">all</field>
+        <field name="key">Ctrl+Delete</field>
+        <field name="action">delete_order</field>
+        <field name="description">Delete the current draft order.</field>
+    </record>
+    <record id="shortcut_all_help" model="pos.keyboard.shortcut">
+        <field name="name">Shortcut Tips</field>
+        <field name="sequence">50</field>
+        <field name="screen_scope">all</field>
+        <field name="key">?</field>
+        <field name="action">show_help</field>
+        <field name="description">Show all active keyboard shortcuts.</field>
+    </record>
+    <record id="shortcut_all_toggle" model="pos.keyboard.shortcut">
+        <field name="name">Pause Shortcuts</field>
+        <field name="sequence">60</field>
+        <field name="screen_scope">all</field>
+        <field name="key">Ctrl+Shift+K</field>
+        <field name="action">toggle_shortcuts</field>
+        <field name="description">Pause or resume keyboard shortcuts.</field>
+    </record>
+    <record id="shortcut_all_cash_move" model="pos.keyboard.shortcut">
+        <field name="name">Cash In/Out</field>
+        <field name="sequence">70</field>
+        <field name="screen_scope">all</field>
+        <field name="key">Ctrl+M</field>
+        <field name="action">cash_move</field>
+        <field name="description">Open cash in/out.</field>
+    </record>
+    <record id="shortcut_all_create_product" model="pos.keyboard.shortcut">
+        <field name="name">Create Product</field>
+        <field name="sequence">80</field>
+        <field name="screen_scope">all</field>
+        <field name="key">Ctrl+Shift+P</field>
+        <field name="action">create_product</field>
+        <field name="description">Create a product from POS.</field>
+    </record>
+    <record id="shortcut_all_refund" model="pos.keyboard.shortcut">
+        <field name="name">Refund Order</field>
+        <field name="sequence">90</field>
+        <field name="screen_scope">all</field>
+        <field name="key">Ctrl+R</field>
+        <field name="action">refund_order</field>
+        <field name="description">Open synced orders for refund.</field>
+    </record>
+</odoo>

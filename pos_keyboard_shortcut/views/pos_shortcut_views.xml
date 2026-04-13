@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_keyboard_shortcut_list" model="ir.ui.view">
+        <field name="name">pos.keyboard.shortcut.list</field>
+        <field name="model">pos.keyboard.shortcut</field>
+        <field name="arch" type="xml">
+            <list string="POS Keyboard Shortcuts" default_order="sequence, screen_scope, name">
+                <field name="sequence" widget="handle"/>
+                <field name="active"/>
+                <field name="name"/>
+                <field name="config_id"/>
+                <field name="screen_scope"/>
+                <field name="key"/>
+                <field name="action"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_pos_keyboard_shortcut_form" model="ir.ui.view">
+        <field name="name">pos.keyboard.shortcut.form</field>
+        <field name="model">pos.keyboard.shortcut</field>
+        <field name="arch" type="xml">
+            <form string="POS Keyboard Shortcut">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Go to Payment"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Trigger">
+                            <field name="active"/>
+                            <field name="sequence"/>
+                            <field name="config_id" options="{'no_create': True}"/>
+                            <field name="screen_scope"/>
+                            <field name="key" placeholder="Shift+P"/>
+                            <field name="key_normalized" readonly="1"/>
+                        </group>
+                        <group string="Action">
+                            <field name="action"/>
+                            <field name="description"/>
+                            <field name="target_product_id" invisible="action != 'add_product'"/>
+                            <field name="target_category_id" invisible="action != 'select_category'"/>
+                            <field name="target_pricelist_id" invisible="action != 'select_pricelist'"/>
+                            <field name="target_payment_method_id" invisible="action != 'payment_method'"/>
+                            <field name="target_payment_code" invisible="action != 'payment_method'"
+                                   placeholder="cash or bank"/>
+                            <field name="target_amount" invisible="action != 'payment_amount'"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pos_keyboard_shortcut_search" model="ir.ui.view">
+        <field name="name">pos.keyboard.shortcut.search</field>
+        <field name="model">pos.keyboard.shortcut</field>
+        <field name="arch" type="xml">
+            <search string="POS Keyboard Shortcuts">
+                <field name="name"/>
+                <field name="key"/>
+                <field name="action"/>
+                <field name="config_id"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Global" name="global" domain="[('config_id', '=', False)]"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group name="group_by">
+                    <filter string="Screen" name="group_screen" context="{'group_by': 'screen_scope'}"/>
+                    <filter string="Action" name="group_action" context="{'group_by': 'action'}"/>
+                    <filter string="Point of Sale" name="group_config" context="{'group_by': 'config_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_pos_keyboard_shortcut" model="ir.actions.act_window">
+        <field name="name">Keyboard Shortcuts</field>
+        <field name="res_model">pos.keyboard.shortcut</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_pos_keyboard_shortcut_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a POS keyboard shortcut</p>
+            <p>Use global shortcuts for every POS or assign a shortcut to a specific POS configuration.</p>
+        </field>
+    </record>
+
+    <menuitem
+            id="menu_pos_keyboard_shortcut"
+            name="Keyboard Shortcuts"
+            parent="point_of_sale.menu_point_config_product"
+            action="action_pos_keyboard_shortcut"
+            sequence="25"
+            groups="point_of_sale.group_pos_manager"/>
+</odoo>

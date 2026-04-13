@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_keyboard_shortcut.ShortcutTipsDialog">
+        <Dialog title.translate="POS Keyboard Shortcuts" size="'lg'">
+            <div class="pos-shortcut-tips">
+                <t t-foreach="groupedShortcuts" t-as="group" t-key="group.scope">
+                    <section class="pos-shortcut-group">
+                        <h3 t-esc="group.label"/>
+                        <div class="pos-shortcut-grid">
+                            <t t-foreach="group.shortcuts" t-as="shortcut" t-key="shortcut.id">
+                                <div class="pos-shortcut-row">
+                                    <kbd t-esc="shortcut.key"/>
+                                    <span t-esc="shortcut.description || shortcut.name"/>
+                                </div>
+                            </t>
+                        </div>
+                    </section>
+                </t>
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary" t-on-click="props.close">Close</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

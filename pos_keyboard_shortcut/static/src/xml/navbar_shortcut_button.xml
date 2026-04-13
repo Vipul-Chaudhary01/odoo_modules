@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_keyboard_shortcut.NavbarShortcutButton" t-inherit="point_of_sale.Navbar"
+       t-inherit-mode="extension">
+        <xpath expr="//Input[@t-if='pos.showSearchButton()']" position="after">
+            <button
+                    t-if="showShortcutTipsButton"
+                    class="btn btn-light btn-lg lh-lg pos-shortcut-header-button"
+                    title.translate="Keyboard Shortcuts"
+                    aria-label="Keyboard Shortcuts"
+                    t-on-click="() => this.openShortcutTips()">
+                <i class="fa fa-fw fa-lg fa-keyboard-o" aria-hidden="true"/>
+            </button>
+        </xpath>
+    </t>
+</templates>

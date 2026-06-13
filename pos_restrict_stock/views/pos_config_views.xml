@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_config_form_inherit_pos_restrict_stock" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.pos.restrict.stock</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='configuration']/div[hasclass('o_settings_container')]" position="inside">
+                <setting string="POS Stock Control"
+                         help="Display stock in POS and prevent sales of unavailable products">
+                    <field name="display_stock"/>
+                    <div class="content-group mt16">
+                        <div class="row">
+                            <label for="restrict_out_of_stock" class="col-lg-5 o_light_label"/>
+                            <field name="restrict_out_of_stock"/>
+                        </div>
+                        <div class="row mt8" invisible="not display_stock and not restrict_out_of_stock">
+                            <label for="stock_type" class="col-lg-5 o_light_label"/>
+                            <field name="stock_type" widget="radio"/>
+                        </div>
+                        <div class="row mt8" invisible="not display_stock and not restrict_out_of_stock">
+                            <label for="stock_threshold" class="col-lg-5 o_light_label"/>
+                            <field name="stock_threshold"/>
+                        </div>
+                        <div class="row mt8" invisible="not display_stock">
+                            <label for="hide_out_of_stock_products" class="col-lg-5 o_light_label"/>
+                            <field name="hide_out_of_stock_products"/>
+                        </div>
+                        <div class="row mt8" invisible="not restrict_out_of_stock">
+                            <label for="allow_manager_override" class="col-lg-5 o_light_label"/>
+                            <field name="allow_manager_override"/>
+                        </div>
+                        <div class="row mt8" invisible="not restrict_out_of_stock">
+                            <label for="out_of_stock_message" class="col-lg-5 o_light_label"/>
+                            <field name="out_of_stock_message" placeholder="Message shown to cashiers"/>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

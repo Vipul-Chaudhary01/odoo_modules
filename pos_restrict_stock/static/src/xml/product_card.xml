@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_restrict_stock.ProductCardStockBadge" t-inherit="point_of_sale.ProductCard"
+       t-inherit-mode="extension">
+        <xpath expr="//article" position="inside">
+            <span t-if="this.showStockBadge"
+                  t-attf-class="pos-stock-badge {{ this.stockBadgeClass }}"
+                  t-att-title="this.stockTitle">
+                <i class="fa fa-cubes me-1"/>
+                <t t-esc="this.stockBadgeLabel"/>
+            </span>
+        </xpath>
+    </t>
+</templates>

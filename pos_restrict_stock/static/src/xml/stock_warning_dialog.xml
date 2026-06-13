@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="pos_restrict_stock.StockWarningDialog">
+        <Dialog size="'sm'" title="props.title" contentClass="'pos-stock-warning-dialog'">
+            <div class="pos-stock-warning">
+                <div class="pos-stock-warning__hero">
+                    <span class="pos-stock-warning__icon fa fa-exclamation-triangle"/>
+                    <div>
+                        <div class="pos-stock-warning__headline">
+                            Product cannot be added
+                        </div>
+                        <div class="pos-stock-warning__message" t-esc="props.message"/>
+                    </div>
+                </div>
+
+                <div class="pos-stock-warning__details">
+                    <div class="pos-stock-warning__row">
+                        <span>Product</span>
+                        <strong t-esc="props.productName"/>
+                    </div>
+                    <div class="pos-stock-warning__row">
+                        <span>Requested</span>
+                        <strong t-esc="props.requestedQty"/>
+                    </div>
+                    <t t-foreach="props.stockLines" t-as="line" t-key="line.label">
+                        <div t-att-class="line.danger ? 'pos-stock-warning__row pos-stock-warning__row--danger' : 'pos-stock-warning__row'">
+                            <span t-esc="line.label"/>
+                            <strong t-esc="line.value"/>
+                        </div>
+                    </t>
+                    <div class="pos-stock-warning__row">
+                        <span>Location</span>
+                        <strong t-esc="props.locationName"/>
+                    </div>
+                    <div t-if="props.stockTypeLabel" class="pos-stock-warning__row">
+                        <span>Stock Basis</span>
+                        <strong t-esc="props.stockTypeLabel"/>
+                    </div>
+                </div>
+
+                <div t-if="props.allowOverride" class="pos-stock-warning__override">
+                    Manager override is enabled for this POS.
+                </div>
+            </div>
+
+            <t t-set-slot="footer">
+                <button
+                        t-if="props.cancel"
+                        class="btn btn-secondary"
+                        t-on-click="onCancel"
+                        t-esc="props.cancelLabel"
+                />
+                <button
+                        class="btn"
+                        t-att-class="props.confirmClass"
+                        t-on-click="onConfirm"
+                        t-esc="props.confirmLabel"
+                />
+            </t>
+        </Dialog>
+    </t>
+</templates>

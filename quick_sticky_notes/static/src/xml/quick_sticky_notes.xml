@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="quick_sticky_notes.QuickStickyNotes">
+        <div t-if="state.canUseStickyNotes" class="o_quick_sticky_notes" t-on-click="keepOpen">
+            <button class="o_quick_sticky_notes_toggle btn border-0"
+                    title="Sticky Notes"
+                    aria-label="Sticky Notes"
+                    t-on-click="togglePanel">
+                <i class="fa fa-sticky-note-o"/>
+                <span t-if="state.notes.length" class="o_quick_sticky_notes_count" t-esc="state.notes.length"/>
+            </button>
+
+            <div t-if="state.isOpen" class="o_quick_sticky_notes_panel shadow-lg">
+                <div class="o_quick_sticky_notes_header">
+                    <strong>Sticky Notes</strong>
+                    <div class="d-flex align-items-center gap-1">
+                        <button class="btn btn-sm btn-light" title="All Notes" aria-label="All Notes"
+                                t-on-click="openAllNotes">
+                            <i class="oi oi-launch"/>
+                        </button>
+                        <button class="btn btn-sm btn-primary" title="New Note" aria-label="New Note"
+                                t-on-click="addNote">
+                            <i class="oi oi-plus"/>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="o_quick_sticky_notes_search">
+                    <i class="oi oi-search"/>
+                    <input class="form-control form-control-sm"
+                           placeholder="Search notes..."
+                           t-att-value="state.search"
+                           t-on-input="onSearchInput"/>
+                </div>
+
+                <div class="o_quick_sticky_notes_body">
+                    <aside class="o_quick_sticky_notes_list">
+                        <button t-foreach="filteredNotes"
+                                t-as="note"
+                                t-key="note.id"
+                                type="button"
+                                t-attf-class="o_quick_sticky_notes_list_item o_quick_sticky_notes_color_#{note.color} #{note.id === state.selectedId ? 'active' : ''}"
+                                t-on-click="() => this.selectNote(note)">
+                            <span t-esc="note.name || 'New Note'"/>
+                            <small class="d-block text-muted text-truncate" t-esc="getNoteReference(note)"/>
+                        </button>
+                        <div t-if="!filteredNotes.length" class="o_quick_form_sticky_empty">No notes found</div>
+                    </aside>
+
+                    <section t-if="selectedNote"
+                             t-attf-class="o_quick_sticky_notes_editor o_quick_sticky_notes_color_#{selectedNote.color}">
+                        <input class="form-control o_quick_sticky_notes_title"
+                               t-model="selectedNote.name"
+                               placeholder="Title"
+                               t-on-input="onTitleInput"/>
+                        <div class="o_quick_sticky_notes_meta">
+                            <span>Created by</span>
+                            <strong t-esc="getNoteCreator(selectedNote)"/>
+                            <span t-if="getNoteCreatedDate(selectedNote)">on</span>
+                            <span t-if="getNoteCreatedDate(selectedNote)" t-esc="getNoteCreatedDate(selectedNote)"/>
+                        </div>
+                        <textarea t-ref="textarea"
+                                  class="form-control o_quick_sticky_notes_content"
+                                  t-model="selectedNote.content"
+                                  placeholder="Write a quick note..."
+                                  t-on-input="onContentInput"/>
+                        <div class="o_quick_sticky_notes_footer">
+                            <div class="o_quick_sticky_notes_palette">
+                                <button t-foreach="colorOptions"
+                                        t-as="color"
+                                        t-key="color"
+                                        type="button"
+                                        t-attf-class="o_quick_sticky_notes_swatch o_quick_sticky_notes_color_#{color} #{selectedNote.color === color ? 'active' : ''}"
+                                        t-att-title="color"
+                                        t-att-aria-label="color"
+                                        t-on-click="() => this.onColorClick(color)"/>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span t-if="state.isSaving" class="text-muted small">Saving...</span>
+                                <button t-if="selectedNote.res_model &amp;&amp; selectedNote.res_id"
+                                        class="btn btn-sm btn-light"
+                                        title="Open Record"
+                                        aria-label="Open Record"
+                                        t-on-click="openLinkedRecord">
+                                    <i class="oi oi-launch"/>
+                                </button>
+                                <button class="btn btn-sm btn-light" title="Delete Note" aria-label="Delete Note"
+                                        t-on-click="deleteNote">
+                                    <i class="fa fa-trash"/>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
